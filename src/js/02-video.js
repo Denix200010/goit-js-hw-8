@@ -14,6 +14,7 @@ const iframe = document.querySelector('iframe');
 iframePlayer.on('timeupdate', throttle(onPlay, 1000));
 resume();
     
+
 function resume() {
   if (JSON.parse(localStorage.getItem(SAVE_TIME)) === null) {
     return;
