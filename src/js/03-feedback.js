@@ -8,7 +8,6 @@ formRef.addEventListener('submit', onFormSubmit);
 populateOutput();
 
 function onFormInput(e) {
-    console.log(1)
     localStorageData[e.target.name] = e.target.value;
     localStorage.setItem('feedback-form-state', JSON.stringify(localStorageData));
     
