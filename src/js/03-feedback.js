@@ -15,9 +15,16 @@ function onFormInput(e) {
 
 function onFormSubmit(e) {
     e.preventDefault();
-    formRef.reset();
+
     localStorage.removeItem('feedback-form-state');
-    console.log(localStorageData);
+
+    const { elements: { email, message } } = e.currentTarget;
+    if (email.value === '' || message.value === '') {
+        return alert('Пожалуйста, заполните все поля для ввода!')
+    }
+    
+    console.log({email: email.value, message: message.value});
+    formRef.reset();
 }
 
 function populateOutput() {
