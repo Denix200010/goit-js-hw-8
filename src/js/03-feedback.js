@@ -1,7 +1,7 @@
 import throttle from "lodash.throttle";
 
 const formRef = document.querySelector('.feedback-form');
-const localStorageData = {};
+let localStorageData = {};
 
 formRef.addEventListener('input', throttle(onFormInput, 500));
 formRef.addEventListener('submit', onFormSubmit);
@@ -17,14 +17,14 @@ function onFormSubmit(e) {
     e.preventDefault();
 
     localStorage.removeItem('feedback-form-state');
-
+    localStorageData = {};
     const { elements: { email, message } } = e.currentTarget;
     if (email.value === '' || message.value === '') {
         return alert('Пожалуйста, заполните все поля для ввода!')
     }
     
     console.log({email: email.value, message: message.value});
-    formRef.reset();
+    formRef.reset(); 
 }
 
 function populateOutput() {
